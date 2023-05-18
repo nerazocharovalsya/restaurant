@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/dishes" enctype="multipart/form-data">
+  <label for="name">Имя </label>
+  <input name="name" required type="text" id="name">
+  <br>
+  <label for="title">Описание</label>
+  <input name="title" required  title="Максимум 200 символов" type="text"  id="title">
+  <br>
+  <label for="price">Цена</label>
+  <input name="price" type="text" pattern="[0-9]{1,5}" title="Число от 0 до 99999" required id="price">
+  <br>
+  <br>
+  <label for="composition">Состав:</label>
+  <input name="composition" type="text" required id="composition">
+  <br>
+  <label for="image1">Фото</label>
+  <input name="file1"  required type="file" accept=".png, .jpeg, .jpg, .heic" id="image1">
+  <br>
+  <input type="submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ресторан</title>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header id="head">
+    <nav>
+        <div class="div-header-link-menu">
+            <p class="header-link-menu"><a href="/categories">МЕНЮ</a></p>
+        </div>
+       <div class="div-header-company-name">
+
+       </div>
+       <div class="div-link-profile">
+
+       </div>
+        <div class="div-cart">
+
+        </div>
+
+    </nav>
+</header>
+<div class="main-img">
+    <img src="/img/rest.png" class="header_img">
+    <div class="text">
+        <p>Доставка еды из ресторана.</p>
+    </div>
+</div>
+<h1 id="#Topic1" class="h1">Популярное меню:</h1>
+<ul class="li_contener">
+    <tr  th:each="category:${categories}" >
+    <li><div class="div-li">
+        <a th:href="@{/categories/{path}(path=${category.getEnName()})}">
+            <img class="di"  th:src="@{/images/{id}(id=${category.getImage().getId()})}">
+        </a>
+        <a th:href="@{/categories/{path}(path=${category.getEnName()})}">
+            <p style="font-size: 22px;" th:text="'  '+${category.getTitle()}"></p>
+        </a>
+    </div></li>
+    </tr>
+</ul>
+<footer >
+    <address>
+        <!-- <h2 id="cont_info"><a href="#head">В начало</a></h2> -->
+        <div class="footer_aboutUs">
+            <h2>О нас</h2>
+            <div class="line"></div>
+            <p>Это сайт, на котором можно узнать информацию об актерах театра и кино. Также вы можете создать заявку на добавление своего актера. Выполнил студент группы ИКБО-01-21 Властюк Артём</p>
+            <div class="footer_logo">
+
+                <div><a href="https://vk.com/artemvlastyuk"><img src="pages/img/vk.png" height="20" width="20"></a>
+                </div>
+                <div><a href="https://instagram.com/artemvlastyuk"><img src="pages/img/inst.png" height="20" width="20"></a></div>
+
+
+                <div><a href="https://t.me/artemvlastyuk"><img   src="pages/img/tg1.png" height="20" width="20"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="nav">
+            <h2>Навигация</h2>
+            <div class="line"></div>
+            <div><a class="vhod" href="pages/login.html">Вход</a></div>
+            <div><a href="kino.html">Актеры Кино</a></div>
+            <div><a href="theatre.html">Актеры Театра</a></div>
+            <div><a href="form.html">Добавить актера</a></div>
+            <div><a href="gallery.html">Галерея</a></div>
+        </div>
+        <div class="Contacts" id="cont_info">
+            <h2>Контакты</h2>
+            <div class="line"></div>
+            <div>
+
+                <a href="mailto:cvlastyul@mail.ru">
+                    <img src="pages/img/mail.jpeg" height="12"> cvlastyuk@mail.ru</a></div>
+            <div><a href="tel: +79299287868"> <img src="pages/img/tel.png" height="12">+7(929)-928-78-68</a></div>
+            <div><a href="https://yandex.ru/maps/213/moscow/house/ulitsa_baryshikha_12/Z04YdQFgSkQEQFtvfXR1cXxrZw==/?ll=37.360313%2C55.840083&z=15" >
+                <img src="pages/img/geo.png" height="12"> Россия г. Москва улица Барышиха д12</a></div>
+        </div>
+    </address>
+</footer>
+</body>
+</html>
