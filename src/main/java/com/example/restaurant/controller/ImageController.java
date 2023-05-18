@@ -24,7 +24,6 @@ public class ImageController {
     }
 
     @GetMapping("/images/{id}")
-
     private ResponseEntity<?> getImageById(@PathVariable("id") int id) {
         //System.out.println(this.imageFootballUniformService);
         Image image = imageFootballUniformService.getById(id);

@@ -21,6 +21,8 @@ public class Category {
     private int id;
     @Column(name = "title")
     private String title;
+    @Column(name = "en_name")
+    private String enName;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "category")
 
     private List<Dish> dishes;

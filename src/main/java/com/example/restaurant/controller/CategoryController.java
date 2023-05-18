@@ -51,14 +51,13 @@ public class CategoryController {
         model.addAttribute("dishes",dishService.getDishes());
         return "form_for_add_new_category";
     }
-    @GetMapping("/categories/{id}")
-    @ResponseBody
-    public Category getCategory(@PathVariable Long id){
+    @GetMapping("/categories/{nameCategory}")
+    public String getCategory(@PathVariable String nameCategory, Model model){
         System.out.println("Получение категории");
-        System.out.println(id);
-//        model.addAttribute("dishes",dishService.getDishes());
-        System.out.println(categoryService.getCategoryById(id).getId());
-        return categoryService.getCategoryById(id);
+        System.out.println(nameCategory);
+        model.addAttribute("category",categoryService.getByEnName(nameCategory));
+//        System.out.println(categoryService.getByEnName(nameCategory));
+        return "category";
     }
 //    @PostMapping("/footballUniforms/{id}")
 ////    @PreAuthorize("hasAuthority('ROLE_USER')")

@@ -13,4 +13,5 @@ public interface CategoryRepository extends JpaRepository<Category,Long> {
     List<Category> findAll();
     @Transactional
     Category getCategoryById(Long id);
+    Category getCategoryByEnName(String name);
 }

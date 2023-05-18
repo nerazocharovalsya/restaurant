@@ -1,6 +1,7 @@
 package com.example.restaurant.controller;
 
 import com.example.restaurant.models.User;
+import com.example.restaurant.services.CategoryService;
 import com.example.restaurant.services.DishService;
 import com.example.restaurant.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -13,11 +14,13 @@ import java.security.Principal;
 public class UserController {
     private final UserService userService;
     private final DishService dishService;
+    private final CategoryService categoryService;
 
 
-    public UserController(UserService userService, DishService dishService) {
+    public UserController(UserService userService, DishService dishService, CategoryService categoryService) {
         this.userService = userService;
         this.dishService = dishService;
+        this.categoryService = categoryService;
     }
     @GetMapping("/registration")
     public String registration(){
@@ -59,6 +62,7 @@ public class UserController {
         else {
             model.addAttribute("Admin", userService.getByUserName(principal.getName()).isAdmin());
         }
+        model.addAttribute("categories",categoryService.getCategories());
         return "index";
     }
     @GetMapping("/cart")

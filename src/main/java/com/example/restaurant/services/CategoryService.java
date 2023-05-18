@@ -30,16 +30,11 @@ public class CategoryService {
         this.dishRepository = dishRepository;
     }
 
-
+    public Category getByEnName(String name){
+        return categoryRepository.getCategoryByEnName(name);
+    }
     public void deleteCategoryByID(Long id){
-//        C footballUniform=footballUniformRepository.getFootballUniformById(id);
-//        footballUniform.setFootballers(null);
-//        System.out.println(footballUniform.getUsers().size());
-//        for(User user : footballUniform.getUsers()){
-//            user.deleteFootballUniform(footballUniform);
-//            userRepository.save(user);
-//        }
-//        footballUniformRepository.save(footballUniform);
+
         categoryRepository.deleteById(id);
     }
 
@@ -48,7 +43,26 @@ public class CategoryService {
             Image image = toImageEntity(file1);
             category.setImage(image);
         }
-
+        char[] abcCyr =   {' ','а','б','в','г','д','е', 'ё','ж','з','и','й','к','л','м','н','о','п','р','с','т','у',
+                'ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я'};
+        String[] abcLat = {"-","a","b","v","g","d","e", "e","zh","z","i","j","k","l","m","n","o","p","r","s","t","u",
+                "f","h", "c","ch","sh","shch","","","","e","yu","ya"};
+        System.out.println(abcLat.length+" "+abcCyr.length);
+        StringBuilder builder = new StringBuilder();
+        String message=category.getTitle().toLowerCase();
+        for (int i = 0; i < message.length(); i++) {
+            boolean flag=false;
+            for (int x = 0; x < abcCyr.length; x++ ) {
+                if (message.charAt(i) == abcCyr[x]) {
+                    builder.append(abcLat[x]);
+                    flag=true;
+                }
+            }
+            if (!flag){
+                builder.append(message.charAt(i));
+            }
+        }
+        category.setEnName(builder.toString());
         categoryRepository.save(category);
         for (Dish dish:category.getDishes()){
             dish.setCategory(category);
